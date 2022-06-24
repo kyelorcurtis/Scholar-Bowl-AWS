@@ -10,7 +10,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long>{
     
     public List<Question> findAllByYear(int year);
 
-    public List<Question> findAllByPacketNumber(int packetNumber);
+    public List<Question> findAllByPacketId(long packetId);
 
     public List<Question> findAllByQuestionType(String questionType);
 

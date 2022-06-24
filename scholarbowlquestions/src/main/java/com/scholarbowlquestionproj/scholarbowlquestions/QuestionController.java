@@ -62,9 +62,9 @@ public class QuestionController {
     }
 
     // Get Question by Packet
-    @GetMapping("/packet/{packetNumber}")
-    public ResponseEntity<List<Question>> getQuestionByPacket(@PathVariable(value = "packetNumber") int packetNumber){
-        return new ResponseEntity<List<Question>>(this.questionRepository.findAllByPacketNumber(packetNumber), HttpStatus.OK);
+    @GetMapping("/packetId/{packetId}")
+    public ResponseEntity<List<Question>> getQuestionByPacket(@PathVariable(value = "packetId") long packetId){
+        return new ResponseEntity<List<Question>>(this.questionRepository.findAllByPacketId(packetId), HttpStatus.OK);
     }
 
     // Get Question by Packet and Number
