@@ -34,10 +34,12 @@ public class Question {
     private String bonusBeginningQuestion;
     @Column(name = "answer", columnDefinition = "text")
     private String answer;
+    @Column(name = "title", columnDefinition = "text")
+    private String title;
 
     public Question(){}
 
-    public Question(int packetNumber, int questionNumber, String bonusLetter, int year, int pointValue, String questionBody, String category, String questionType, String bonusBeginningQuestion, String answer){
+    public Question(int packetNumber, int questionNumber, String bonusLetter, int year, int pointValue, String questionBody, String title, String category, String questionType, String bonusBeginningQuestion, String answer){
         super();
         this.packetNumber = packetNumber;
         this.questionNumber = questionNumber;
@@ -49,6 +51,15 @@ public class Question {
         this.questionType = questionType;
         this.bonusBeginningQuestion = bonusBeginningQuestion;
         this.answer = answer;
+        this.title = title;
+    }
+
+	public long getId() {
+		return this.id;
+	}
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getPacketNumber() {
@@ -58,11 +69,11 @@ public class Question {
     public void setPacketNumber(int packetNumber) {
         this.packetNumber = packetNumber;
     }
-    public int getquestionNumber() {
+    public int getQuestionNumber() {
         return this.questionNumber;
     }
 
-    public void setquestionNumber(int questionNumber) {
+    public void setQuestionNumber(int questionNumber) {
         this.questionNumber = questionNumber;
     }
 
@@ -112,6 +123,14 @@ public class Question {
 
     public void setQuestionType(String questionType) {
         this.questionType = questionType;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBonusBeginningQuestion() {

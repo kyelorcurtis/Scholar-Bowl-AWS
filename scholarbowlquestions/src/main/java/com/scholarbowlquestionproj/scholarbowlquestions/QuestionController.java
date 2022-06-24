@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,12 @@ public class QuestionController {
     @PostMapping
     public Question createQuestion(@RequestBody Question question){
         return this.questionRepository.save(question);
+    }
+
+    // Get Questions
+    @GetMapping
+    public List<Question> getQuestion(){
+        return this.questionRepository.findAll();
     }
 
     // Get Question by Type (bonus or full question)
@@ -89,6 +96,26 @@ public class QuestionController {
     public Question getQuestionById(@PathVariable(value = "id") long questionId){
         return this.questionRepository.findById(questionId)
         .orElseThrow(() -> new ResourceNotFoundException("Question Not Found With ID:" + questionId));
+    }
+
+    // Put Question by ID
+    @PutMapping("/update/{id}")
+    public Question putQuestionById(@RequestBody Question question, @PathVariable(value = "id") long questionId){
+        Question exisiting = this.questionRepository.findById(questionId)
+        .orElseThrow(() -> new ResourceNotFoundException("Question Not Found With ID:" + questionId));
+
+        exisiting.setPacketNumber(question.getPacketNumber());
+        exisiting.setQuestionNumber(question.getQuestionNumber());
+        exisiting.setBonusLetter(question.getBonusLetter());
+        exisiting.setYear(question.getYear());
+        exisiting.setPointValue(question.getPointValue());
+        exisiting.setQuestionBody(question.getQuestionBody());
+        exisiting.setCategory(question.getCategory());
+        exisiting.setQuestionType(question.getQuestionType());
+        exisiting.setBonusBeginningQuestion(question.getBonusBeginningQuestion());
+        exisiting.setAnswer(question.getAnswer());
+        exisiting.setTitle(question.getTitle());
+        return this.questionRepository.save(exisiting);
     }
 
     // Delete Question by ID
