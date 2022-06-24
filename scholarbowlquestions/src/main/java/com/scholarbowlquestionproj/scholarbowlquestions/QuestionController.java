@@ -115,6 +115,7 @@ public class QuestionController {
         exisiting.setBonusBeginningQuestion(question.getBonusBeginningQuestion());
         exisiting.setAnswer(question.getAnswer());
         exisiting.setTitle(question.getTitle());
+        exisiting.setPacketId(question.getPacketId());
         return this.questionRepository.save(exisiting);
     }
 

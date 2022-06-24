@@ -36,10 +36,12 @@ public class Question {
     private String answer;
     @Column(name = "title", columnDefinition = "text")
     private String title;
+    @Column(name = "packetId", columnDefinition = "int")
+    private long packetId;
 
     public Question(){}
 
-    public Question(int packetNumber, int questionNumber, String bonusLetter, int year, int pointValue, String questionBody, String title, String category, String questionType, String bonusBeginningQuestion, String answer){
+    public Question(int packetNumber,long packetId, int questionNumber, String bonusLetter, int year, int pointValue, String questionBody, String title, String category, String questionType, String bonusBeginningQuestion, String answer){
         super();
         this.packetNumber = packetNumber;
         this.questionNumber = questionNumber;
@@ -52,6 +54,7 @@ public class Question {
         this.bonusBeginningQuestion = bonusBeginningQuestion;
         this.answer = answer;
         this.title = title;
+        this.packetId = packetId;
     }
 
 	public long getId() {
@@ -60,6 +63,14 @@ public class Question {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+	public long getPacketId() {
+		return this.packetId;
+	}
+
+    public void setPacketId(long packetId) {
+        this.packetId = packetId;
     }
 
     public int getPacketNumber() {
